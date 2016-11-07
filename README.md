@@ -16,7 +16,7 @@
 
 ## 2 - TP Spring
 
-*Objectif :* comprendre le fonctionnement de spring par l'intermediaire d'un web service.
+*Objectif :* comprendre le fonctionnement de spring par l'intermediaire d'un web service. Toutes les informations sont [ici](http://spring.io/guides/gs/rest-service/) .
 
 *Commandes :*
 

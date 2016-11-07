@@ -1,0 +1,16 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ifi.tp</groupId>
+    <artifactId>tp-maven</artifactId>
+    <version>0.1.0</version>
+    <properties>
+        <junitVersion>4.12</junitVersion>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junitVersion}</version>
+        </dependency>
+    </dependencies>
+</project>

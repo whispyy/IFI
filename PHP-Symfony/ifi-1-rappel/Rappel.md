@@ -8,3 +8,6 @@ Exemple :
 <?php
   echo 'Hello World';
 ```
+> Bonne Pratique :
+>
+> Ne pas mélanger HTML et PHP. Ne pas mettre le tag fermant.

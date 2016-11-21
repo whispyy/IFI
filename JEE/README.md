@@ -47,3 +47,5 @@ Possibilité d'entrer un nom : http://localhost:8080/greeting?name=MonNom .
 
 * mvn clean package
 * java -jar target/gs-accessing-data-jpa-0.1.0.jar
+
+## 5 - TP fusion TP1 & TP2

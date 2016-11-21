@@ -40,3 +40,10 @@ Possibilité d'entrer un nom : http://localhost:8080/greeting?name=MonNom .
 
 
 ## 4 - TP MongoDB
+
+*Objectif :* accéder aux données via l'utilisation de JPA et MongoDB. Toutes les informations relatives au TP sont [ici](http://spring.io/guides/gs/accessing-data-mongodb/) .
+
+*Commandes :*
+
+* mvn clean package
+* java -jar target/gs-accessing-data-jpa-0.1.0.jar

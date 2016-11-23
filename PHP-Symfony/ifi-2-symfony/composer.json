@@ -1,0 +1,10 @@
+{
+    "require": {
+        "symfony/yaml": "^3.1",
+        "symfony/form": "^3.1",
+        "symfony/http-foundation": "^3.1"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.1"
+    }
+}

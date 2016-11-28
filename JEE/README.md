@@ -49,3 +49,9 @@ Possibilité d'entrer un nom : http://localhost:8080/greeting?name=MonNom .
 * java -jar target/gs-accessing-data-jpa-0.1.0.jar
 
 ## 5 - TP fusion TP1 & TP2
+
+## 6 - TP Consuming-Rest
+
+*Objectif :* Utiliser une Application Rest pour recevoir des données d'une API. Toutes les informations relatives au TP sont [ici](http://spring.io/guides/gs/consuming-rest/) .
+
+## 7 - TP Web Component - MVC

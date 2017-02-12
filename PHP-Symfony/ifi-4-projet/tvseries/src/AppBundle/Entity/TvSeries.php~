@@ -172,28 +172,4 @@ class TvSeries
 
 
 	
-
-    /**
-     * Add episode
-     *
-     * @param \AppBundle\Entity\Episode $episode
-     *
-     * @return TvSeries
-     */
-    public function addEpisode(\AppBundle\Entity\Episode $episode)
-    {
-        $this->episode[] = $episode;
-
-        return $this;
-    }
-
-    /**
-     * Remove episode
-     *
-     * @param \AppBundle\Entity\Episode $episode
-     */
-    public function removeEpisode(\AppBundle\Entity\Episode $episode)
-    {
-        $this->episode->removeElement($episode);
-    }
 }

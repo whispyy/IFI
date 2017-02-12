@@ -7,14 +7,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class TvSeriesController extends Controller
 {
     /**
      * @Route("/series/create")
+     * @param Request $request
+     * @return Response
      */
     public function createSeriesAction(Request $request) {
-        $s  = new TvSeries();
+        $s = new TvSeries();
         $s->setAuthor($request->get('author'));
         $s->setName($request->get('name'));
         $s->setDescription($request->get('description'));
@@ -26,28 +30,29 @@ class TvSeriesController extends Controller
         return new Response('ok');
     }
 
+    /**
+     * @Route("/series/remove")
+     * @param Request $request
+     * @return Response
+     */
+    public function removeSeriesAction(Request $request)
+    {
+        //series/remove/series_name=...
+        $manager = $this->getDoctrine()->getManager();
+        $seriesName = $request->get('series_name');
+        $name = $manager->getRepository(TvSeries::class)->findOneBy(['name' => $seriesName]);
+        
+        $manager->remove($name);
+        $manager->flush();
+        return new Response('ok');
+    }
+
 	/**
      * @Route("/", name="homepage")
      */
 	public function listAction() {
 
-
-		/*Test de création d'entités en mémoire*/
-		/*$s1 = new TvSeries();
-		$s1->setId('fa512e84-797c-4513-ab9b-da096b641f81');
-		$s1->setAuthor('Author 1');
-		$s1->setName('Title 1');
-
-		$s2 = new TvSeries();
-		$s2->setId('2627c2a5-5c50-40da-815e-832e0564e4ec');
-		$s2->setAuthor('Author 2');
-		$s2->setName('Title 2');
-
-		$series = [
-			$s1, $s2
-		];*/
-
-		$manager = $this->get('doctrine')->getManager();
+		$manager = $this->getDoctrine()->getManager();
         $series = $manager->getRepository(TvSeries::class)->findAll();
 
 		return $this->render('tvseries/index.html.twig',['series' => $series]);

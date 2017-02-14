@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type;
 
 class EpisodeController extends Controller
@@ -33,31 +33,37 @@ class EpisodeController extends Controller
     {
         //Create new episode
         $e = new Episode();
-        $e->setEpisodeNumber($request->get('episodeNumber'));
-        $e->setName($request->get('name'));
-        $e->setDescription($request->get('description'));
 
-        $form = $this->createFormBuilder($e)
+        $formEpisode = $this->createFormBuilder($e)
+            ->add('tvSeries', EntityType::class, array(
+                'class' => 'AppBundle\Entity\TvSeries',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.name', 'ASC');
+                },
+                'choice_label' => 'name',
+            ))
             ->add('name', TextType::class)
             ->add('episodeNumber', TextType::class)
+            ->add('datePublished', DateType::class)
             ->add('description', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create Task'))
+            ->add('save', SubmitType::class, array('label' => 'Create Episode'))
             ->getForm();
 
-        $form->handleRequest($request);
+        $formEpisode->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formEpisode->isSubmitted() && $formEpisode->isValid()) {
 
-            $e = $form->getData();
+            $e = $formEpisode->getData();
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($e);
             $em->flush();
 
-            return new Response('ok');
+            return new Response('New episode was added');
         }
         return $this->render('episodes/index.html.twig', array(
-            'form' => $form->createView(),
+            'form' => $formEpisode->createView(),
         ));
     }
         /**

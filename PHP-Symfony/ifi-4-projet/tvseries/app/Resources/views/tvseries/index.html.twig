@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock%}
+{#
+{% extends 'base.html.twig' %}
+
+{% block body %}
 	<h1>Series Manager</h1>
 
 	{% for s in series %}
@@ -11,3 +19,4 @@
 		</div>
 	{% endfor %}
 {% endblock%}
+#}

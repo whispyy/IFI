@@ -19,15 +19,31 @@ class TvSeriesController extends Controller
      */
     public function createSeriesAction(Request $request) {
         $s = new TvSeries();
-        $s->setAuthor($request->get('author'));
-        $s->setName($request->get('name'));
-        $s->setDescription($request->get('description'));
+       // $s->setAuthor($request->get('author'));
+       // $s->setName($request->get('name'));
+       // $s->setDescription($request->get('description'));
 
-        $manager = $this->getDoctrine()->getManager();
-        $manager->persist($s);
-        $manager->flush();
+        $formSeries = $this->createFormBuilder($s)
+            ->add('name', TextType::class)
+            ->add('author', TextType::class)
+            ->add('description', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Series'))
+            ->getForm();
 
-        return new Response('ok');
+        $formSeries->handleRequest($request);
+        
+        if ($formSeries->isSubmitted() && $formSeries->isValid()) {
+
+            $s = $formSeries->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($s);
+            $manager->flush();
+
+            return new Response('ok');
+        }
+        return $this->render('tvseries/index.html.twig', array(
+            'form' => $formSeries->createView(),
+        ));
     }
 
     /**

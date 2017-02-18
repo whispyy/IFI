@@ -5,18 +5,4 @@
 {{ form_widget(form) }}
 {{ form_end(form) }}
 {% endblock%}
-{#
-{% extends 'base.html.twig' %}
 
-{% block body %}
-	<h1>Series Manager</h1>
-
-	{% for s in series %}
-		<div id="s{{ s.id }}">
-			<h2>{{ s.name }}</h2>
-			Author : {{ s.author }}
-			<p>{{ s.description }}</p>
-		</div>
-	{% endfor %}
-{% endblock%}
-#}

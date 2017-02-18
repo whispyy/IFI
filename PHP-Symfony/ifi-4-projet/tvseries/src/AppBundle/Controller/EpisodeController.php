@@ -67,13 +67,13 @@ class EpisodeController extends Controller
         ));
     }
         /**
-         * @Route("/", name="homepage")
+         * @Route("/episodes/about")
          */
         public function listAction()
         {
             $manager = $this->getDoctrine()->getManager();
             $episodes = $manager->getRepository(Episode::class)->findAll();
 
-            return $this->render('episodes/index.html.twig', ['episodes' => $episodes]);
+            return $this->render('episodes/about.html.twig', ['episodes' => $episodes]);
         }
     }

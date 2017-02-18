@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}AquaNote!{% endblock %}</title>
 
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -14,12 +14,12 @@
     <body>
         <div class="search-bar">
             <form method="GET" action="" class="js-sea-search sea-search">
-                <input type="search" name="q" placeholder="Search Series" autocomplete="off" class="search-input">
+                <input type="search" name="q" placeholder="Search Sea Creatures" autocomplete="off" class="search-input">
             </form>
         </div>
         <header class="header">
-            <img class="logo-icon" src="{{ asset('images/cinema-logo.png') }}">
-            <h1 class="logo">Series Manager</h1>
+            <img class="logo-icon" src="{{ asset('images/aquanote-logo.png') }}">
+            <h1 class="logo">AquaNote</h1>
             <ul class="navi">
                 <li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>
                 <li><a href="#">Login</a></li>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="footer">
-            <p class="footer-text">Master E-Services 2017</p>
+            <p class="footer-text">Made with <span class="heart"><3</span> <a href="https://knpuniversity.com">KnpUniversity</a></p>
         </div>
 
         {% block javascripts %}

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Episode;
 use AppBundle\Entity\TvSeries;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -70,7 +71,8 @@ class TvSeriesController extends Controller
 
 		$manager = $this->getDoctrine()->getManager();
         $series = $manager->getRepository(TvSeries::class)->findAll();
+        $episodes = $manager->getRepository(Episode::class)->findAll();
 
-		return $this->render('tvseries/index.html.twig',['series' => $series]);
+		return $this->render('index.html.twig',['series' => $series,'episodes' => $episodes]);
 	}
 }

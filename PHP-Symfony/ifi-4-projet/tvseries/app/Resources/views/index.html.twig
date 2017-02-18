@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% for s in series %}
+    <ul id="{{ s.id }}"> <br />
+        Serial : {{ s.name }} <br />
+        Author : {{ s.author }} <br />
+        <p>{{ s.description }}</p>
+
+        {% for e in episodes %}
+            {% if e.tvSeries == true %}
+                Episode name : {{ e.name }}<br />
+                Episode number : {{ e.episodeNumber }}<br />
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endfor %}
+{% endblock %}
